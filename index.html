@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Millions Kart — India's D2C House of Brands</title>
+<meta name="description" content="Millions Kart is a Mohali-based D2C house of brands — Million Cases, Peeperly, Regalia, Amigos, LEKE and Mohar — built on performance marketing and unit economics." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0D0A18;
+    --bg-base:#15112A;
+    --bg-mid:#1D1838;
+    --bg-card:#241F45;
+
+    --line: rgba(244,242,255,.14);
+    --line-soft: rgba(244,242,255,.09);
+
+    --text:#F4F2FF;
+    --text-muted: rgba(244,242,255,.72);
+    --text-faint: rgba(244,242,255,.46);
+
+    --violet:#7C5CFF;
+    --violet-light:#9B82FF;
+    --teal:#2DD4BF;
+    --gold:#FFC94D;
+    --tier1:#6B7FD6;
+
+    --on-violet:#FFFFFF;
+    --on-gold:#241F45;
+
+    --mc:#4D7FFF;
+    --peeperly:#FF6FA0;
+    --regalia:#FFC94D;
+    --amigos:#FF7A50;
+    --leke:#2DD4BF;
+    --mohar:#9B82FF;
+
+    --font-display:'Sora', sans-serif;
+    --font-body:'Work Sans', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    --fs-h1: clamp(2.2rem, 1.1rem + 4.4vw, 4.2rem);
+    --fs-h2: clamp(1.7rem, 1rem + 2.3vw, 2.6rem);
+    --container: 1180px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg-base); color:var(--text-muted);
+    font-family:var(--font-body); line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:var(--font-display); margin:0; line-height:1.16; letter-spacing:-.01em; font-weight:700; color:var(--text); }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; cursor:pointer; background:none; border:none; }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--violet-light); outline-offset:3px; border-radius:4px; }
+
+  .skip-link{ position:absolute; left:-999px; background:var(--violet); color:#fff; padding:10px 16px; border-radius:6px; z-index:999; }
+  .skip-link:focus{ left:16px; top:16px; }
+
+  .container{ max-width:var(--container); margin:0 auto; padding:0 24px; }
+
+  .eyebrow{
+    display:inline-block; font-family:var(--font-mono); font-size:.74rem;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--violet-light); margin-bottom:16px;
+  }
+  .num{ color:var(--gold); font-weight:600; }
+
+  .section{ padding:clamp(64px,9vw,116px) 0; }
+  .section--deep{ background:var(--bg-deep); }
+  .section--base{ background:var(--bg-base); }
+  .section--mid{ background:var(--bg-mid); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ transition:none; opacity:1; transform:none; } }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:100px;
+    font-family:var(--font-body); font-weight:600; font-size:.95rem; border:1.5px solid transparent;
+    transition:background .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-solid{ background:var(--violet); color:var(--on-violet); box-shadow:0 10px 24px rgba(124,92,255,.28); }
+  .btn-solid:hover{ background:var(--violet-light); }
+  .btn-outline{ border-color:var(--line); color:var(--text); }
+  .btn-outline:hover{ border-color:var(--violet-light); }
+
+  .link-arrow{ display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:.94rem; color:var(--text); }
+  .link-arrow .arrow{ display:inline-block; transition:transform .2s ease; }
+  .link-arrow:hover .arrow{ transform:translateX(4px); }
+  .link-arrow:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+  .badge-pill{
+    display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:100px;
+    background:var(--bg-card); border:1px solid var(--line); font-family:var(--font-mono);
+    font-size:.78rem; color:var(--text-muted);
+  }
+  .chip-pill{
+    display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:100px;
+    background:var(--bg-card); border:1px solid var(--line); font-size:.84rem; color:var(--text);
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{ position:fixed; top:0; left:0; right:0; z-index:100; padding:18px 0; background:transparent; transition:background .25s ease, padding .25s ease, box-shadow .25s ease; }
+  .nav.is-scrolled{ background:rgba(13,10,24,.88); backdrop-filter:blur(10px); padding:13px 0; box-shadow:0 6px 20px rgba(0,0,0,.3); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand-mark{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.02rem; color:var(--text); }
+  .node-dot{ width:11px; height:11px; border-radius:50%; background:linear-gradient(135deg, var(--violet), var(--teal)); flex:none; }
+  .nav-links{ display:flex; align-items:center; gap:32px; }
+  .nav-links a{ font-size:.92rem; font-weight:500; color:var(--text-muted); transition:color .2s ease; }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{ display:flex; align-items:center; gap:18px; }
+  .nav-toggle{ display:none; color:var(--text); font-size:1.3rem; padding:6px; }
+
+  @media (max-width:880px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:flex-start; gap:0;
+      background:rgba(13,10,24,.97); backdrop-filter:blur(10px);
+      max-height:0; overflow:hidden; transition:max-height .3s ease; padding:0 24px;
+    }
+    .nav-links.is-open{ max-height:260px; padding:10px 24px 18px; }
+    .nav-links a{ padding:12px 0; width:100%; }
+    .nav-toggle{ display:inline-block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding-top:124px; padding-bottom:56px; position:relative; overflow:hidden; }
+  .hero-inner{ display:flex; align-items:center; gap:48px; }
+  .hero-copy{ flex:1 1 520px; max-width:580px; }
+  .hero-copy h1{ margin:18px 0 22px; }
+  .hero-copy p{ font-size:1.08rem; color:var(--text-muted); max-width:500px; margin-bottom:30px; }
+  .hero-ctas{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; margin-bottom:44px; }
+
+  .hero-stats{ display:flex; flex-wrap:wrap; gap:28px 40px; }
+  .hero-stat-num{ font-family:var(--font-mono); font-size:1.7rem; font-weight:600; color:var(--text); }
+  .hero-stat-label{ font-size:.82rem; color:var(--text-faint); margin-top:4px; }
+
+  .medallion-wrap{ position:relative; width:300px; height:300px; flex:none; margin:0 auto; }
+  .medallion-glow{ position:absolute; inset:-50px; background:radial-gradient(circle, rgba(124,92,255,.32), transparent 70%); filter:blur(6px); }
+  .medallion-ring{ position:absolute; inset:0; border-radius:50%; border:3px solid var(--gold); }
+  .medallion-core{ position:absolute; inset:32px; border-radius:50%; background:linear-gradient(160deg, var(--violet), #4B36A8); display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .medallion-core .num{ font-family:var(--font-mono); font-size:3rem; font-weight:700; color:#fff; }
+  .medallion-core .label{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.14em; color:rgba(255,255,255,.82); margin-top:2px; }
+  .orbit{ position:absolute; inset:0; animation:spin 70s linear infinite; }
+  @media (prefers-reduced-motion:reduce){ .orbit{ animation:none; } }
+  .orbit-dot{ position:absolute; top:50%; left:50%; width:18px; height:18px; border-radius:50%; box-shadow:0 0 0 4px rgba(244,242,255,.07); }
+  .hero-caption{ text-align:center; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em; color:var(--text-faint); margin-top:18px; }
+  @keyframes spin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+
+  @media (max-width:880px){
+    .hero-inner{ flex-direction:column; }
+    .hero-copy{ text-align:center; max-width:560px; }
+    .hero-copy p{ margin-left:auto; margin-right:auto; }
+    .hero-ctas, .hero-stats{ justify-content:center; }
+    .medallion-wrap{ transform:scale(.78); }
+  }
+
+  /* ---------- FEATURES ---------- */
+  .section-head{ max-width:620px; margin-bottom:44px; }
+  .section-head h2{ margin-bottom:14px; }
+  .section-head p{ font-size:1.04rem; color:var(--text-muted); }
+  .feature-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:22px; }
+  .feature-card{ background:var(--bg-card); border:1px solid var(--line-soft); border-radius:18px; padding:28px; display:flex; flex-direction:column; gap:12px; }
+  .feature-icon{ font-size:1.7rem; }
+  .feature-card h3{ font-size:1.12rem; }
+  .feature-card p{ font-size:.94rem; color:var(--text-muted); }
+
+  /* ---------- LEVEL PATH ---------- */
+  .level-path{ position:relative; margin-top:36px; max-width:680px; }
+  .path-line{ position:absolute; left:31px; top:6px; bottom:6px; width:2px; background:linear-gradient(180deg, var(--tier1), var(--violet), var(--teal), var(--gold)); opacity:.55; }
+  .level-item{ display:flex; gap:24px; position:relative; padding-bottom:40px; }
+  .level-item:last-child{ padding-bottom:0; }
+  .level-badge{
+    width:64px; height:64px; border-radius:50%; flex:none; position:relative; z-index:1;
+    display:flex; align-items:center; justify-content:center; background:var(--bg-deep);
+    border:2px solid var(--tier); font-family:var(--font-mono); font-weight:700; color:var(--tier); font-size:1rem;
+  }
+  .level-content{ padding-top:6px; }
+  .level-tag{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; color:var(--tier); display:block; margin-bottom:6px; }
+  .level-content h4{ font-size:1.14rem; margin-bottom:6px; }
+  .level-content p{ font-size:.94rem; color:var(--text-muted); }
+
+  /* ---------- ROSTER ---------- */
+  .roster-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); gap:22px; }
+  .roster-card{
+    background:var(--bg-card); border:1px solid var(--line-soft); border-top:3px solid var(--accent);
+    border-radius:16px; padding:26px; display:flex; flex-direction:column; gap:14px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .roster-card:hover{ transform:translateY(-4px); }
+  .roster-top{ display:flex; align-items:center; gap:10px; }
+  .roster-dot{ width:10px; height:10px; border-radius:50%; background:var(--accent); }
+  .roster-code{ font-family:var(--font-mono); font-size:.74rem; color:var(--text-muted); }
+  .roster-card h3{ font-size:1.16rem; }
+  .roster-card p{ font-size:.94rem; color:var(--text-muted); }
+  .roster-tag{ display:inline-block; padding:5px 12px; border-radius:100px; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em; color:var(--accent); border:1px solid var(--accent); }
+  .roster-link{ margin-top:auto; color:var(--accent); }
+
+  /* ---------- FOUNDER ---------- */
+  .founder-grid{ display:flex; gap:56px; align-items:center; flex-wrap:wrap; }
+  .founder-avatar{ flex:none; }
+  .avatar-box{ width:130px; height:130px; border-radius:50%; border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; background:var(--bg-card); }
+  .avatar-box span{ font-family:var(--font-display); font-size:2.1rem; font-weight:700; color:var(--gold); }
+  .founder-copy{ flex:1 1 460px; max-width:620px; }
+  .founder-quote{ font-family:var(--font-display); font-weight:600; font-size:clamp(1.25rem,1rem+1.3vw,1.6rem); color:var(--text); margin-bottom:22px; line-height:1.4; }
+  .founder-bio{ font-size:1.01rem; color:var(--text-muted); margin-bottom:20px; }
+  .founder-chips{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+  .founder-name{ font-weight:600; color:var(--text); }
+  .founder-name span{ display:block; font-weight:400; font-size:.86rem; color:var(--text-faint); margin-top:2px; }
+
+  /* ---------- CTA SECTIONS ---------- */
+  .cta-section .container{ max-width:740px; text-align:center; }
+  .cta-section h2{ margin-bottom:16px; }
+  .cta-section p{ font-size:1.04rem; color:var(--text-muted); margin-bottom:28px; }
+  .cta-section .btn{ margin:0 auto; }
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{ padding:72px 0 32px; }
+  .footer-top{ margin-bottom:8px; }
+  .footer-top h2{ margin-bottom:10px; font-size:1.5rem; }
+  .footer-tagline{ font-size:.96rem; color:var(--text-muted); margin-bottom:18px; }
+  .footer-email{ font-family:var(--font-mono); font-size:1.08rem; color:var(--violet-light); display:inline-block; margin-bottom:8px; }
+  .footer-address{ font-size:.94rem; color:var(--text-muted); }
+  .footer-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:28px; margin-top:52px; }
+  .footer-col h4{ font-family:var(--font-mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:14px; }
+  .footer-col a{ display:block; font-size:.94rem; padding:6px 0; color:var(--text); opacity:.8; transition:opacity .2s ease; }
+  .footer-col a:hover{ opacity:1; }
+  .footer-bottom{ margin-top:52px; font-size:.82rem; color:var(--text-faint); }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand-mark"><span class="node-dot"></span>Millions Kart</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#portfolio">Roster</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#careers">Careers</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#partner" class="btn btn-solid" style="padding:11px 22px; font-size:.88rem;">Partner With Us</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="hero section--deep">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="badge-pill">🚀 10 Years · ₹250 Cr+ in Sales · 6 Brands Live</span>
+        <h1>We build brands the way they actually work.</h1>
+        <p>We've put <span class="num">₹250 Cr+</span> of our own money on the line to learn this. No outsourced strategy decks, no theory — just six live brands and the playbooks that actually built them.</p>
+        <div class="hero-ctas">
+          <a href="#portfolio" class="btn btn-solid">See the Brands →</a>
+          <a href="#partner" class="link-arrow">Partner with us <span class="arrow">→</span></a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-num">6</div><div class="hero-stat-label">Brands live</div></div>
+          <div><div class="hero-stat-num">₹250Cr+</div><div class="hero-stat-label">Lifetime revenue</div></div>
+          <div><div class="hero-stat-num">₹150Cr+</div><div class="hero-stat-label">Partner growth unlocked</div></div>
+          <div><div class="hero-stat-num">90+</div><div class="hero-stat-label">Team members</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="medallion-wrap" aria-hidden="true">
+          <div class="medallion-glow"></div>
+          <div class="medallion-ring"></div>
+          <div class="medallion-core">
+            <span class="num">10</span>
+            <span class="label">YEARS</span>
+          </div>
+          <div class="orbit">
+            <div class="orbit-dot" style="background:var(--mc); transform:translate(calc(-50% + 0px), calc(-50% + -140px));"></div>
+            <div class="orbit-dot" style="background:var(--peeperly); transform:translate(calc(-50% + 121px), calc(-50% + -70px));"></div>
+            <div class="orbit-dot" style="background:var(--regalia); transform:translate(calc(-50% + 121px), calc(-50% + 70px));"></div>
+            <div class="orbit-dot" style="background:var(--amigos); transform:translate(calc(-50% + 0px), calc(-50% + 140px));"></div>
+            <div class="orbit-dot" style="background:var(--leke); transform:translate(calc(-50% + -121px), calc(-50% + 70px));"></div>
+            <div class="orbit-dot" style="background:var(--mohar); transform:translate(calc(-50% + -121px), calc(-50% + -70px));"></div>
+          </div>
+        </div>
+        <p class="hero-caption">10 YEARS IN THE GAME</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--base">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The System</span>
+        <h2>Everything that runs the engine.</h2>
+        <p>One operating system. Six brands. Zero guesswork.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <span class="feature-icon">🧩</span>
+          <h3>Six Brands, One Engine</h3>
+          <p>Volume, premium, niche, wholesale, and tech — every brand runs on the same performance-marketing playbook.</p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">📊</span>
+          <h3>Real Unit Economics</h3>
+          <p>CAC, LTV, contribution margin. Every decision gets measured against numbers that actually matter, not vanity metrics.</p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">🤝</span>
+          <h3>Hands-On Growth Consulting</h3>
+          <p>Beyond our own brands, we've helped partner brands unlock ₹150 Cr+ in incremental revenue.</p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">👥</span>
+          <h3>90+ Person Execution Team</h3>
+          <p>Warehouse, call centre, creative, and brand-specific growth pods — all under one Mohali roof.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mid" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Journey</span>
+        <h2>Your brand path.</h2>
+        <p>From one founder to a ₹100 Cr house of brands.</p>
+      </div>
+      <div class="level-path reveal">
+        <div class="path-line"></div>
+        <div class="level-item">
+          <div class="level-badge" style="--tier:var(--tier1);">1</div>
+          <div class="level-content">
+            <span class="level-tag" style="--tier:var(--tier1); color:var(--tier1);">LEVEL 1 · 2016</span>
+            <h4>Foundation</h4>
+            <p>One founder, one phone case brand, learning by doing in Mohali.</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <div class="level-badge" style="--tier:var(--violet); border-color:var(--violet); color:var(--violet);">2</div>
+          <div class="level-content">
+            <span class="level-tag" style="color:var(--violet);">LEVEL 2 · 2019–2024</span>
+            <h4>Portfolio Expansion</h4>
+            <p>Peeperly, Regalia, Amigos and LEKE launch — six brands, one playbook, ₹250 Cr+ in lifetime revenue.</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <div class="level-badge" style="border-color:var(--teal); color:var(--teal);">3</div>
+          <div class="level-content">
+            <span class="level-tag" style="color:var(--teal);">LEVEL 3 · 2025–2026</span>
+            <h4>New Frontiers</h4>
+            <p>Mohar launches. Partner consulting crosses ₹150 Cr+ in unlocked revenue.</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <div class="level-badge" style="border-color:var(--gold); color:var(--gold);">★</div>
+          <div class="level-content">
+            <span class="level-tag" style="color:var(--gold);">FINAL LEVEL · 2027</span>
+            <h4>The ₹100 Cr Year</h4>
+            <p>Our next certification. The number we're building toward.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--base" id="portfolio">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Roster</span>
+        <h2>Six brands. Same playbook. Different game.</h2>
+        <p>Pick any one and you'll find the same performance-marketing discipline underneath.</p>
+      </div>
+      <div class="roster-grid">
+
+        <article class="roster-card reveal" style="--accent:var(--mc);">
+          <div class="roster-top"><span class="roster-dot"></span><span class="roster-code">MC—01</span></div>
+          <h3>Million Cases</h3>
+          <p>Our original case brand, engineered for scale — built to win on performance-marketing efficiency, not just creative spend.</p>
+          <span class="roster-tag">VOLUME · FLAGSHIP</span>
+          <a class="roster-link link-arrow" href="#">View brand <span class="arrow">→</span></a>
+        </article>
+
+        <article class="roster-card reveal" style="--accent:var(--peeperly);">
+          <div class="roster-top"><span class="roster-dot"></span><span class="roster-code">PE—02</span></div>
+          <h3>Peeperly</h3>
+          <p>Design-first phone cases for women, with the strongest unit economics in the portfolio — the brand we're investing in for owned-channel growth.</p>
+          <span class="roster-tag">PREMIUM · DESIGN-LED</span>
+          <a class="roster-link link-arrow" href="#">View brand <span class="arrow">→</span></a>
+        </article>
+
+        <article class="roster-card reveal" style="--accent:var(--regalia);">
+          <div class="roster-top"><span class="roster-dot"></span><span class="roster-code">RG—03</span></div>
+          <h3>Regalia</h3>
+          <p>Million Cases' top-tier line, positioned to go toe-to-toe with names like Casetify.</p>
+          <span class="roster-tag">FLAGSHIP PREMIUM · ₹4,999</span>
+          <a class="roster-link link-arrow" href="#">View brand <span class="arrow">→</span></a>
+        </article>
+
+        <article class="roster-card reveal" style="--accent:var(--amigos);">
+          <div class="roster-top"><span class="roster-dot"></span><span class="roster-code">AM—04</span></div>
+          <h3>Amigos</h3>
+          <p>A faith-and-lifestyle brand built lean — prepaid-only, print-on-demand, proving the model before we scale it.</p>
+          <span class="roster-tag">NICHE · TEST &amp; SCALE</span>
+          <a class="roster-link link-arrow" href="#">View brand <span class="arrow">→</span></a>
+        </article>
+
+        <article class="roster-card reveal" style="--accent:var(--leke);">
+          <div class="roster-top"><span class="roster-dot"></span><span class="roster-code">LK—05</span></div>
+          <h3>LEKE</h3>
+          <p>Our reseller and bulk channel, powering demand beyond direct-to-consumer through LEKEpod.store.</p>
+          <span class="roster-tag">WHOLESALE · B2B</span>
+          <a class="roster-link link-arrow" href="#">View brand <span class="arrow">→</span></a>
+        </article>
+
+        <article class="roster-card reveal" style="--accent:var(--mohar);">
+          <div class="roster-top"><span class="roster-dot"></span><span class="roster-code">MO—06</span></div>
+          <h3>Mohar</h3>
+          <p>An NFC-based focus device, co-founded and launch-ready — our first step outside phone cases.</p>
+          <span class="roster-tag">NEW VENTURE · CONSUMER TECH</span>
+          <a class="roster-link link-arrow" href="#">View brand <span class="arrow">→</span></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mid">
+    <div class="container founder-grid">
+      <div class="founder-avatar reveal">
+        <div class="avatar-box"><span>KK</span></div>
+      </div>
+      <div class="founder-copy reveal">
+        <span class="eyebrow">From The Founder</span>
+        <p class="founder-quote">"I didn't learn this business from a textbook — I learned it by running campaigns, reading the numbers, and fixing what broke."</p>
+        <p class="founder-bio">Krishan Kumar (K.K.) founded Millions Kart with no formal business background — just ten years of hands-on experience across performance marketing, product, and operations. That self-made path now shapes how the company runs: lean teams, real metrics, and a relentless focus on what actually drives growth at scale.</p>
+        <div class="founder-chips">
+          <span class="chip-pill">🏆 10-Yr Builder</span>
+          <span class="chip-pill">📈 ₹250Cr+ Generated</span>
+          <span class="chip-pill">🎯 Self-Taught Operator</span>
+        </div>
+        <p class="founder-name">Krishan Kumar<span>Founder &amp; CEO, Millions Kart</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--base cta-section" id="partner">
+    <div class="container reveal">
+      <span class="eyebrow">For Partners &amp; Investors</span>
+      <h2>Ready to build with us?</h2>
+      <p>Beyond Millions Kart's own portfolio, we work with select partner brands on growth consulting — performance marketing, unit economics, and operational scale. So far, that work has unlocked <span class="num">₹150 Cr+</span> in incremental revenue for the brands we've partnered with.</p>
+      <a class="btn btn-solid" href="mailto:hello@millionskart.com?subject=Partnering%20with%20Millions%20Kart">Start a Conversation</a>
+    </div>
+  </section>
+
+  <section class="section section--mid cta-section" id="careers">
+    <div class="container reveal">
+      <span class="eyebrow">Join The Team</span>
+      <h2>Want in?</h2>
+      <p>We're a 90+ person team in Mohali — warehouse and ops, call centre, creative and content, and brand-specific growth pods. If you want real ownership over a brand's numbers, not just a slice of one, we'd like to hear from you.</p>
+      <a class="btn btn-outline" href="mailto:hello@millionskart.com?subject=Joining%20Millions%20Kart">Send Your Resume</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer section--deep" id="contact">
+  <div class="container">
+    <div class="footer-top reveal">
+      <h2><span class="node-dot" style="display:inline-block; margin-right:8px;"></span>Millions Kart</h2>
+      <p class="footer-tagline">Built with ❤️ in Mohali.</p>
+      <a class="footer-email" href="mailto:hello@millionskart.com">hello@millionskart.com</a>
+      <p class="footer-address">Mohali, Punjab · India</p>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Brands</h4>
+        <a href="#">Million Cases</a>
+        <a href="#">Peeperly</a>
+        <a href="#">Regalia</a>
+        <a href="#">Amigos</a>
+        <a href="#">LEKE</a>
+        <a href="#">Mohar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#portfolio">Roster</a>
+        <a href="#careers">Careers</a>
+        <a href="#partner">Partner With Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Also Ours</h4>
+        <a href="https://gameofselling.com" target="_blank" rel="noopener">Game of Selling ↗</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Millions Kart. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('is-scrolled', window.scrollY > 40));
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+</script>
+
+</body>
+</html>
